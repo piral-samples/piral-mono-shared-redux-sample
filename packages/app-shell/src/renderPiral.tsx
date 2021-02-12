@@ -10,9 +10,12 @@ declare module "piral-core/lib/types/custom" {
     interface PiletCustomApi extends StorePluginApi {}
 }
 
+type SharedStore = typeof store;
+type SharedActions = typeof actions;
+
 interface StorePluginApi {
-    globalStore: typeof store;
-    globalStoreActions: typeof actions;
+    globalStore: SharedStore;
+    globalStoreActions: SharedActions;
 }
 
 function createStorePlugin(): PiralPlugin<StorePluginApi> {

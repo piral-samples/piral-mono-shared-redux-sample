@@ -26,6 +26,11 @@
     "react": "*",
     "react-dom": "*",
     "react-router": "*",
+    "react-redux": "*",
+    "redux": "*",
+    "redux-dynamic-modules": "*",
+    "redux-dynamic-modules-saga": "*",
+    "redux-saga": "*",
     "react-router-dom": "*",
     "tslib": "*",
     "path-to-regexp": "*"

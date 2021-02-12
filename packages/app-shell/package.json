@@ -1,7 +1,7 @@
 {
   "name": "app-shell",
   "version": "1.0.0",
-  "description": "",
+  "description": "Sample for the app shell.",
   "keywords": [
     "piral"
   ],
@@ -22,7 +22,13 @@
   "app": "./src/index.html",
   "pilets": {
     "files": [],
-    "externals": [],
+    "externals": [
+      "redux",
+      "react-redux",
+      "redux-dynamic-modules",
+      "redux-dynamic-modules-saga",
+      "redux-saga"
+    ],
     "scripts": {
       "build-pilet": "yarn build",
       "upgrade-pilet": "yarn upgrade"

@@ -6,6 +6,7 @@
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
+    "@types/react-redux": "latest",
     "@types/react-router": "latest",
     "@types/react-router-dom": "latest",
     "lerna": "^3.22.1",

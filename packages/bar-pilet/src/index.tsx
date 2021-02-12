@@ -1,15 +1,13 @@
-import * as React from 'react';
-import { PiletApi } from 'app-shell';
+import * as React from "react";
+import { PiletApi } from "app-shell";
 
 export function setup(app: PiletApi) {
-  app.showNotification('Hello from Piral!', {
+  app.showNotification("Hello from Bar!", {
     autoClose: 2000,
   });
-  app.registerMenu(() =>
-    <a href="https://docs.piral.io" target="_blank">Documentation</a>
-  );
-  app.registerTile(() => <div>Welcome to Piral!</div>, {
+
+  app.registerTile(() => <div className="teaser">Bar here!</div>, {
     initialColumns: 2,
-    initialRows: 1,
+    initialRows: 2,
   });
 }
