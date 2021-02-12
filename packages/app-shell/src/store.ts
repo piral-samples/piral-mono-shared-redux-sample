@@ -1,5 +1,6 @@
-import { createStore, applyMiddleware } from "redux";
-import createSagaMiddleware from "redux-saga";
+import { applyMiddleware } from "redux";
+import { createStore, IModuleStore } from "redux-dynamic-modules";
+import { getSagaExtension } from "redux-dynamic-modules-saga";
 import { takeEvery, put, call } from "redux-saga/effects";
 
 // Reducer
@@ -8,8 +9,11 @@ const initialState = {
     loading: false,
     error: false,
 };
-const reducer = (state = initialState, action) => {
+const dogReducer = (state = initialState, action) => {
     switch (action.type) {
+        case "TEST":
+            console.log("reducer is called", { state });
+            return state;
         case "REQUESTED_DOG":
             return {
                 url: "",
@@ -68,13 +72,28 @@ function* fetchDogAsync() {
 }
 
 // Store
-const sagaMiddleware = createSagaMiddleware();
+// const sagaMiddleware = createSagaMiddleware();
 
 // @ts-ignore
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-export const store = createStore(reducer, composeEnhancers(applyMiddleware(sagaMiddleware)));
-sagaMiddleware.run(watchFetchDog);
+function getDogModule() {
+    return {
+        id: "dogs",
+        reducerMap: {
+            dogs: dogReducer,
+        },
+        sagas: [watchFetchDog],
+    };
+}
+
+export const store = createStore({
+    // enhancers: [window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()],
+    extensions: [getSagaExtension({})],
+});
+
+store.addModule(getDogModule());
+// sagaMiddleware.run(watchFetchDog);
 
 export const actions = {
     fetchDog,

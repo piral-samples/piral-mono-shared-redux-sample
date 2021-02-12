@@ -2,6 +2,12 @@ import * as React from "react";
 import { Provider, connect } from "react-redux";
 
 const Foo = ({ actions, store }) => {
+    console.log({ actions, store });
+
+    React.useEffect(() => {
+        store.subscribe(console.log);
+    }, [store]);
+
     const ConnectedApp = connect(({ url }) => ({ url }), actions)(App);
 
     return (

@@ -1,24 +1,41 @@
-import "piral/polyfills";
-import { renderInstance } from "piral";
+import * as React from "react";
+import { PiralPlugin, renderInstance, createInstance, Piral, createStandardApi, Dashboard } from "piral";
 import { layout, errors } from "./layout";
 import { store, actions } from "./store";
 
 // change to your feed URL here (either using feed.piral.cloud or your own service)
 const feedUrl = "https://feed.piral.cloud/api/v1/pilet/empty";
 
-renderInstance({
-    plugins: [
-        // @ts-ignore
-        (context) => (api, target) => ({
-            globalStore: store,
-            globalStoreActions: actions,
-        }),
-    ],
-    layout,
-    errors,
+declare module "piral-core/lib/types/custom" {
+    interface PiletCustomApi extends StorePluginApi {}
+}
+
+interface StorePluginApi {
+    globalStore: typeof store;
+    globalStoreActions: typeof actions;
+}
+
+function createStorePlugin(): PiralPlugin<StorePluginApi> {
+    return () => ({
+        globalStore: store,
+        globalStoreActions: actions,
+    });
+}
+
+const instance = createInstance({
+    plugins: [createStorePlugin(), ...createStandardApi()],
+    state: {
+        errorComponents: errors,
+        components: layout,
+        routes: {
+            "/": Dashboard,
+        },
+    },
     requestPilets() {
         return fetch(feedUrl)
             .then((res) => res.json())
             .then((res) => res.items);
     },
 });
+
+export default () => <Piral instance={instance}></Piral>;
