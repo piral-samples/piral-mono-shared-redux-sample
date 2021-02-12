@@ -23,7 +23,10 @@
   "pilets": {
     "files": [],
     "externals": [],
-    "scripts": {},
+    "scripts": {
+      "build-pilet": "yarn build",
+      "upgrade-pilet": "yarn upgrade"
+    },
     "validators": {},
     "devDependencies": {},
     "preScaffold": "",
@@ -32,14 +35,5 @@
     "postUpgrade": "",
     "packageOverrides": {}
   },
-  "devDependencies": {
-    "@types/node": "latest",
-    "@types/react": "latest",
-    "@types/react-dom": "latest",
-    "@types/react-router": "latest",
-    "@types/react-router-dom": "latest",
-    "piral-cli": "latest",
-    "piral-cli-webpack": "latest",
-    "typescript": "latest"
-  }
+  "devDependencies": {}
 }

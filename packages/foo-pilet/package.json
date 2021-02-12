@@ -7,40 +7,35 @@
   ],
   "dependencies": {},
   "devDependencies": {
-    "@types/react": "latest",
-    "@types/react-dom": "latest",
-    "@types/react-router": "latest",
-    "@types/react-router-dom": "latest",
-    "@types/node": "latest",
-    "typescript": "latest",
     "@dbeining/react-atom": "latest",
     "@libre/atom": "latest",
+    "app-shell": "1.0.0",
     "history": "latest",
     "react": "latest",
     "react-dom": "latest",
     "react-router": "latest",
     "react-router-dom": "latest",
     "tslib": "latest",
-    "path-to-regexp": "latest",
-    "app-shell": "1.0.0",
-    "piral-cli": "^0.12.4"
+    "path-to-regexp": "latest"
   },
   "peerDependencies": {
     "@dbeining/react-atom": "*",
     "@libre/atom": "*",
+    "app-shell": "*",
     "history": "*",
     "react": "*",
     "react-dom": "*",
     "react-router": "*",
     "react-router-dom": "*",
     "tslib": "*",
-    "path-to-regexp": "*",
-    "app-shell": "*"
+    "path-to-regexp": "*"
   },
   "scripts": {
     "start": "pilet debug",
     "build": "pilet build",
-    "upgrade": "pilet upgrade"
+    "build-pilet": "yarn build",
+    "upgrade": "pilet upgrade",
+    "upgrade-pilet": "yarn upgrade"
   },
   "main": "dist/index.js",
   "files": [

@@ -1,12 +1,34 @@
 {
   "name": "piral-demo",
   "version": "1.0.0",
-  "main": "index.js",
   "license": "MIT",
   "devDependencies": {
-    "lerna": "^3.22.1"
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@types/react-router": "latest",
+    "@types/react-router-dom": "latest",
+    "lerna": "^3.22.1",
+    "piral-cli": "latest",
+    "piral-cli-webpack": "latest",
+    "typescript": "latest"
   },
   "private": true,
+  "scripts": {
+    "start": "yarn watch:all",
+    "prepublish": "yarn build:declaration",
+    "build:declaration": "lerna run declaration",
+    "build:all": "yarn build:portal && yarn build:pilets",
+    "build:portal": "piral build packages/app-shell/src/index.html",
+    "build:pilet": "pilet build packages/${name:-x}-pilet/src/index.tsx",
+    "build:pilets": "lerna run build-pilet",
+    "watch:all": "pilet debug 'packages/*-pilet/src/index.tsx'",
+    "watch:portal": "piral debug packages/app-shell/src/index.html",
+    "watch:pilet": "pilet debug packages/${name:-x}-pilet/src/index.tsx",
+    "add:pilet": "pilet new portal --target packages/${name:-x}-pilet",
+    "upgrade:pilet": "pilet upgrade --target packages/${name:-x}-pilet",
+    "upgrade:pilets": "lerna run upgrade-pilet"
+  },
   "workspaces": [
      "packages/*"
   ] 
