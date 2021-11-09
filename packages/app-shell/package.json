@@ -7,7 +7,7 @@
   ],
   "types": "./dist/index.d.ts",
   "dependencies": {
-    "piral": "^0.12.4",
+    "piral": "0.14.0",
     "react-redux": "^7.2.2",
     "redux": "^4.0.5",
     "redux-dynamic-modules": "^5.2.3",

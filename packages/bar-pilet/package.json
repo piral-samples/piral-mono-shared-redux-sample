@@ -13,8 +13,8 @@
     "history": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "react-router": "latest",
-    "react-router-dom": "latest",
+    "react-router": "^5",
+    "react-router-dom": "^5",
     "tslib": "latest",
     "path-to-regexp": "latest"
   },
