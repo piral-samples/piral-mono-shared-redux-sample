@@ -10,7 +10,7 @@ import { layout, errors } from "./layout";
 import { store, actions } from "./store";
 
 // change to your feed URL here (either using feed.piral.cloud or your own service)
-const feedUrl = "https://feed.piral.cloud/api/v1/pilet/empty";
+const feedUrl = "https://feed.piral.cloud/api/v1/pilet/redux-sample";
 
 declare module "piral-core/lib/types/custom" {
   interface PiletCustomApi extends StorePluginApi {}

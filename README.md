@@ -1,4 +1,12 @@
-# Piral Monorepo with a Shared Redux Store
+[![Piral Logo](https://github.com/smapiot/piral/raw/develop/docs/assets/logo.png)](https://piral.io)
+
+# [Piral Sample](https://piral.io) &middot; [![GitHub License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/smapiot/piral/blob/main/LICENSE) [![Gitter Chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/piral-io/community)
+
+> Piral Monorepo with a Shared Redux Store
+
+:zap: Shows how redux can be used as a shared state container.
+
+You can visit this demo at [mono-shared-redux.samples.piral.cloud/](https://mono-shared-redux.samples.piral.cloud/).
 
 ## Covered Functionality
 
@@ -69,3 +77,7 @@ name=foo yarn build:pilet
 ```
 
 where the `foo-pilet` package would be build.
+
+## License
+
+Piral and this sample code is released using the MIT license. For more information see the [license file](./LICENSE).
