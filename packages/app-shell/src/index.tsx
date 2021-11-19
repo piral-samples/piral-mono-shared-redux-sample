@@ -35,7 +35,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
 
 const App = () => {
   const [user, setUser] = React.useState<any>();
-  
+
   return (
     <React.Suspense fallback={<div>Loading...</div>}>
       {user ? <Piral /> : <Login onLogin={setUser} />}

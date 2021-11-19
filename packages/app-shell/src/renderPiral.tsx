@@ -1,5 +1,11 @@
 import * as React from "react";
-import { PiralPlugin, renderInstance, createInstance, Piral, createStandardApi, Dashboard } from "piral";
+import {
+  PiralPlugin,
+  createInstance,
+  Piral,
+  createStandardApi,
+  Dashboard,
+} from "piral";
 import { layout, errors } from "./layout";
 import { store, actions } from "./store";
 
@@ -7,38 +13,38 @@ import { store, actions } from "./store";
 const feedUrl = "https://feed.piral.cloud/api/v1/pilet/empty";
 
 declare module "piral-core/lib/types/custom" {
-    interface PiletCustomApi extends StorePluginApi {}
+  interface PiletCustomApi extends StorePluginApi {}
 }
 
 type SharedStore = typeof store;
 type SharedActions = typeof actions;
 
 interface StorePluginApi {
-    globalStore: SharedStore;
-    globalStoreActions: SharedActions;
+  globalStore: SharedStore;
+  globalStoreActions: SharedActions;
 }
 
 function createStorePlugin(): PiralPlugin<StorePluginApi> {
-    return () => ({
-        globalStore: store,
-        globalStoreActions: actions,
-    });
+  return () => ({
+    globalStore: store,
+    globalStoreActions: actions,
+  });
 }
 
 const instance = createInstance({
-    plugins: [createStorePlugin(), ...createStandardApi()],
-    state: {
-        errorComponents: errors,
-        components: layout,
-        routes: {
-            "/": Dashboard,
-        },
+  plugins: [createStorePlugin(), ...createStandardApi()],
+  state: {
+    errorComponents: errors,
+    components: layout,
+    routes: {
+      "/": Dashboard,
     },
-    requestPilets() {
-        return fetch(feedUrl)
-            .then((res) => res.json())
-            .then((res) => res.items);
-    },
+  },
+  requestPilets() {
+    return fetch(feedUrl)
+      .then((res) => res.json())
+      .then((res) => res.items);
+  },
 });
 
 export default () => <Piral instance={instance}></Piral>;
